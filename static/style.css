@@ -1,0 +1,22 @@
+body {
+    font-family: Arial, sans-serif;
+    background: #f8f9fa;
+}
+.container {
+    max-width: 600px;
+}
+.card {
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.progress-circle {
+    width: 200px;
+    height: 200px;
+    margin: 0 auto;
+}
+.btn {
+    transition: background-color 0.3s, transform 0.3s;
+}
+.btn:hover {
+    transform: scale(1.05);
+}

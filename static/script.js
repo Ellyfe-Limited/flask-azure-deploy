@@ -29,7 +29,7 @@ function calculateHydration() {
             statusSmiley.src = '/static/images/milddehydrated.gif'; // Update with actual path
             hydrationStatus.textContent = 'Mildly Dehydrated';
         } else {
-            statusSmiley.src = 'static/images/hydrated.gif'; // Update with actual path
+            statusSmiley.src = '/static/images/hydrated.gif'; // Update with actual path
             hydrationStatus.textContent = 'Hydrated';
         }
 

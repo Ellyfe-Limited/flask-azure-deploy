@@ -1,3 +1,4 @@
+// script.js
 function calculateHydration() {
     const age = document.getElementById('age').value;
     const height = document.getElementById('height').value;
@@ -15,40 +16,22 @@ function calculateHydration() {
     .then(response => response.json())
     .then(data => {
         // Clear previous results
-        document.getElementById('progress-circle').innerHTML = '';
+        document.getElementById('status-smiley').src = '';
         document.getElementById('hydration-status').innerHTML = '';
 
-        const progressCircle = new ProgressBar.Circle('#progress-circle', {
-            color: '#aaa',
-            strokeWidth: 10,
-            trailWidth: 5,
-            easing: 'easeInOut',
-            duration: 1400,
-            text: {
-                autoStyleContainer: false
-            },
-            from: { color: '#FFEA82', width: 10 },
-            to: { color: data.status === 'Hydrated' ? '#00ff00' : data.status === 'Mild-Dehydrated' ? '#ffff00' : '#ff0000', width: 10 },
-            step: function(state, circle) {
-                circle.path.setAttribute('stroke', state.color);
-                circle.path.setAttribute('stroke-width', state.width);
-
-                var value = Math.round(circle.value() * 100);
-                if (value === 0) {
-                    circle.setText('');
-                } else {
-                    circle.setText(data.percentage.toFixed(2) + '%');
-                }
-            }
-        });
-
-        progressCircle.text.style.fontFamily = '"Raleway", Helvetica, sans-serif';
-        progressCircle.text.style.fontSize = '2rem';
-
-        progressCircle.animate(data.percentage / 100);
-
+        const statusSmiley = document.getElementById('status-smiley');
         const hydrationStatus = document.getElementById('hydration-status');
-        hydrationStatus.innerHTML = `<h2 class="text-${data.status === 'Hydrated' ? 'success' : data.status === 'Mild-Dehydrated' ? 'warning' : 'danger'}">${data.status}</h2>`;
+
+        if (data.status === 'Dehydrated') {
+            statusSmiley.src = '/static/images/dehydrated.gif'; // Update with actual path
+            hydrationStatus.textContent = 'Dehydrated';
+        } else if (data.status === 'Mild-Dehydrated') {
+            statusSmiley.src = '/static/images/milddehydrated.gif'; // Update with actual path
+            hydrationStatus.textContent = 'Mildly Dehydrated';
+        } else {
+            statusSmiley.src = 'static/images/hydrated.gif'; // Update with actual path
+            hydrationStatus.textContent = 'Hydrated';
+        }
 
         document.getElementById('result-card').style.display = 'block';
     });

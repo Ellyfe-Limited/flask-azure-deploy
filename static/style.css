@@ -1,3 +1,4 @@
+/* styles.css */
 body {
     font-family: Arial, sans-serif;
     background: #f8f9fa;
@@ -9,10 +10,17 @@ body {
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
-.progress-circle {
-    width: 200px;
-    height: 200px;
-    margin: 0 auto;
+.status-container {
+    text-align: center;
+    margin-top: 50px;
+}
+#status-smiley {
+    width: 600px;
+    height: 600px;
+}
+#hydration-status {
+    font-size: 50px;
+    font-weight: bold;
 }
 .btn {
     transition: background-color 0.3s, transform 0.3s;
